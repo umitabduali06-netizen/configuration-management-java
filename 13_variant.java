@@ -3,17 +3,13 @@ import java.time.LocalDateTime;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
-/*
- * Конфигурация көздеріне арналған интерфейс
- */
+
 interface ConfigurationSource {
     Map<String, String> load();
     void save(Map<String, String> data);
 }
 
-/*
- * Файлдан конфигурация оқу
- */
+
 class FileConfigSource implements ConfigurationSource {
 
     private final String filePath = "config.txt";
@@ -54,9 +50,7 @@ class FileConfigSource implements ConfigurationSource {
     }
 }
 
-/*
- * Environment айнымалыларынан оқу
- */
+
 class EnvConfigSource implements ConfigurationSource {
 
     @Override
@@ -66,13 +60,11 @@ class EnvConfigSource implements ConfigurationSource {
 
     @Override
     public void save(Map<String, String> data) {
-        // Environment variables сақталмайды
+      
     }
 }
 
-/*
- * Конфигурация өзгерістерін логқа жазу
- */
+
 class ConfigAuditLogger {
 
     public static void log(String key, String oldValue, String newValue) {
@@ -85,9 +77,7 @@ class ConfigAuditLogger {
     }
 }
 
-/*
- * Негізгі конфигурация менеджері (Singleton)
- */
+
 class ConfigurationManager {
 
     private static ConfigurationManager instance;
@@ -138,10 +128,7 @@ class ConfigurationManager {
     }
 }
 
-/*
- * Программаны іске қосу
- * public ЕМЕС — файл аты басқа болғандықтан
- */
+
 class Main {
 
     public static void main(String[] args) {
